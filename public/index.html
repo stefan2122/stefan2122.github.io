@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+  <!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBJ8OOsq9r25Wm9hcI0a4_RAEAm8ZS827k",
+    authDomain: "the-raw-juicery.firebaseapp.com",
+    databaseURL: "https://the-raw-juicery.firebaseio.com",
+    storageBucket: "the-raw-juicery.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!-- Handlebars CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <!-- custom scripts -->
+  <script src="main.js"></script>
+</head>
+<body>
+
+
+
+  <script id="user-name" type="text/x-handlebars-template">
+    <h1>{{name}}</h1>
+  </script>
+
+
+</body>
+</html>
