@@ -1,10 +1,18 @@
 $(document).ready(function(){
 var provider = new firebase.auth.FacebookAuthProvider();
+<<<<<<< HEAD
 var source   = $("#user-template").html();
 var template = Handlebars.compile(source);
 
 
 $('#login').click(function(){firebase.auth().signInWithPopup(provider).then(function(result) {
+=======
+var source   = $("#user-name").html();
+var template = Handlebars.compile(source);
+
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+>>>>>>> 254ac494e933897e9e98593a6795058c9228da42
   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
   var token = result.credential.accessToken;
   // The signed-in user info.
@@ -12,6 +20,7 @@ $('#login').click(function(){firebase.auth().signInWithPopup(provider).then(func
   console.log(user.displayName)
   console.log(user)
 
+<<<<<<< HEAD
   var displayUser = {
     name: user.displayName,
     picture: user.photoURL,
@@ -54,6 +63,12 @@ $('#logout').click(function signOut(){
 
 })
 
+=======
+  var displayUserName = {
+    name: "hello" }
+
+  var html = template(displayUserName)
+>>>>>>> 254ac494e933897e9e98593a6795058c9228da42
 
 }).catch(function(error) {
   // Handle Errors here.
@@ -65,6 +80,7 @@ $('#logout').click(function signOut(){
   var credential = error.credential;
   // ...
 });
+<<<<<<< HEAD
 
 
 
@@ -77,6 +93,25 @@ $('#logout').click(function signOut(){
 })
 //  var sourceTemplate = $('#list-template').html();
 //   var templateMessages = Handlebars.compile(sourceTemplate);
+=======
+})
+// $('#Login').click(function login(){
+// ref.authWithOAuthPopup("google", function(error, authData) {
+//   if (error) {
+//     console.log("Login Failed!", error);
+//   } else {
+//     console.log("Authenticated successfully with payload:", authData);
+//   }
+// });
+// })
+
+// $(document).ready(function() {
+//   // create object instance of my Firebase database
+//   var myDBReference = new Firebase('https://the-raw-juicery.firebaseio.com/');
+
+//  var sourceTemplate = $('#list-template').html();
+//   var template = Handlebars.compile(sourceTemplate);
+>>>>>>> 254ac494e933897e9e98593a6795058c9228da42
 
 //   // define submit event listener/handler
 //   $('#post').click(function(event) {
@@ -104,7 +139,11 @@ $('#logout').click(function signOut(){
 //       };
 //       console.log(data)
 
+<<<<<<< HEAD
 //       var templateHTML = templateMessages(data);
+=======
+//       var templateHTML = template(data);
+>>>>>>> 254ac494e933897e9e98593a6795058c9228da42
 
 //       var $templateHTML = $(templateHTML);
 
@@ -135,4 +174,9 @@ $('#logout').click(function signOut(){
 
 
 //   })
+<<<<<<< HEAD
 // })
+=======
+
+// });
+>>>>>>> 254ac494e933897e9e98593a6795058c9228da42
