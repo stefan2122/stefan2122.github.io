@@ -1,10 +1,10 @@
 $(document).ready(function(){
 var provider = new firebase.auth.FacebookAuthProvider();
-var source   = $("#user-name").html();
+var source   = $("#user-template").html();
 var template = Handlebars.compile(source);
 
 
-firebase.auth().signInWithPopup(provider).then(function(result) {
+$('#login').click(function(){firebase.auth().signInWithPopup(provider).then(function(result) {
   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
   var token = result.credential.accessToken;
   // The signed-in user info.
@@ -12,10 +12,48 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   console.log(user.displayName)
   console.log(user)
 
-  var displayUserName = {
-    name: "hello" }
+  var displayUser = {
+    name: user.displayName,
+    picture: user.photoURL,
+    email: user.email}
 
-  var html = template(displayUserName)
+  var html = template(displayUser)
+
+  console.log(html)
+ 
+  $('#test').replaceWith(html)
+
+ var database = firebase.database()
+
+
+$('#submit').click(function writeUserData(userID, name, email) {
+  console.log('click')
+  var userID = user.uid
+   var appUserName = $('#name').val()
+    var appEmail = $('#email').val()
+  database.ref('users/' + userID).set({
+    username: appUserName,
+    email: appEmail
+  })
+  $('#name').val('')
+  $('#email').val('')
+
+  })
+$('#delete').click(function removeUserData(userID){
+  var userID = user.uid
+  database.ref('users/' + userID).remove()
+})
+
+$('#logout').click(function signOut(){
+  firebase.auth().signOut().then(function() {
+  console.log('signed out')
+}, function(error) {
+  // An error happened.
+})
+});
+
+})
+
 
 }).catch(function(error) {
   // Handle Errors here.
@@ -27,23 +65,18 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var credential = error.credential;
   // ...
 });
+
+
+
+
+  // create object instance of my Firebase database
+
+
+
+
 })
-// $('#Login').click(function login(){
-// ref.authWithOAuthPopup("google", function(error, authData) {
-//   if (error) {
-//     console.log("Login Failed!", error);
-//   } else {
-//     console.log("Authenticated successfully with payload:", authData);
-//   }
-// });
-// })
-
-// $(document).ready(function() {
-//   // create object instance of my Firebase database
-//   var myDBReference = new Firebase('https://the-raw-juicery.firebaseio.com/');
-
 //  var sourceTemplate = $('#list-template').html();
-//   var template = Handlebars.compile(sourceTemplate);
+//   var templateMessages = Handlebars.compile(sourceTemplate);
 
 //   // define submit event listener/handler
 //   $('#post').click(function(event) {
@@ -71,7 +104,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
 //       };
 //       console.log(data)
 
-//       var templateHTML = template(data);
+//       var templateHTML = templateMessages(data);
 
 //       var $templateHTML = $(templateHTML);
 
@@ -102,5 +135,4 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
 
 
 //   })
-
-// });
+// })

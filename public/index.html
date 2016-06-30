@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <head>
+<!-- stylesheet -->
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<!-- facebook AccountKit -->
+<script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
   <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script>
@@ -21,11 +25,25 @@
 </head>
 <body>
 
+  <script id="user-template" type="text/x-handlebars-template">
+  <div>
+    <img align="middle" src="{{picture}}"></img><span style="text-align: center;font-size:30pt; font-family:Arial;text-transform: uppercase;">Welcome {{name}}!</span><br><br>
+    <span style="align: center;">Please enter your information below in order to complete the registration process</span>
+    <br><br>
 
+    Username: <input id="name"></input><br>
+    Email: <input id="email" value={{email}}></input>
+    <button id="submit">Sign Up</button><br><br><br>
+    <button id="delete">Delete</button>
+    <button id="logout">Log Out</button>
 
-  <script id="user-name" type="text/x-handlebars-template">
-    <h1>{{name}}</h1>
+    </div>
+  
   </script>
+
+  <div id="test">
+    <button id="login" type="submit">Login</button>
+  </div>
 
 
 </body>
